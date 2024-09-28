@@ -1,0 +1,94 @@
+backend:
+  branch: main
+  name: github
+  repo: basa-casa/admin-scms
+collections:
+- collection_type: files
+  description: Edits the admin page for your site.
+  files:
+  - fields:
+    - field_type: string
+      label: Title
+      name: title
+      widget: string
+    - default: https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js
+      field_type: string
+      hint: URL of javascript CMS imported to <script src="{{ .Params.CMS }}"></script>
+      label: CMS
+      name: CMS
+      widget: string
+    - field_type: list
+      fields:
+      - field_type: string
+        hint: enter `collection filename`, i.e. `collection hugo-content-default
+        name: import
+        widget: string
+      - default: import
+        field_type: select
+        label: Collection Type
+        name: collection_type
+        options:
+        - import
+        - folder
+        - files
+        - set
+        widget: hidden
+      - collapsed: true
+        field_type: object
+        fields:
+        - field_type: string
+          label: Name
+          name: name
+          required: false
+          widget: string
+        - field_type: string
+          hint: Label in the editor UI; defaults to the value of name.
+          label: Label
+          name: label
+          required: false
+          widget: string
+        - field_type: text
+          hint: Text displayed below the label when viewing a collection. Useful for
+            adding instructions prior to content creation or editing.
+          label: Description
+          name: description
+          namespace: nc
+          required: false
+          widget: text
+        - field_type: string
+          hint: Enter a path relative to the base of the repository, where all files
+            created with this collection will be stored.
+          label: Folder
+          name: folder
+          required: false
+          widget: string
+        name: extend
+        required: false
+        widget: object
+      hint: Import collections
+      label: Collections
+      label_singular: Collection
+      minimize_collapsed: true
+      name: collections
+      required: true
+      summary: 'import: {{import}}'
+      widget: list
+    - field_type: markdown
+      hint: 'This field writes to the Markdown body of this CMS'' (_)index.md file.
+        HTML will print to .Content at /admin/help/index.html. Use it to document
+        the admin page for your site. '
+      label: Help
+      name: body
+      required: false
+      slug: admin-help-body
+      widget: markdown
+    file: content/admin/_index.md
+    label: Admin
+    name: admin
+  label: admin/_index.md
+  name: admin
+display_url: /
+logo_url: /img/hugo-admin.png
+media_folder: assets/img
+public_folder: img
+site_url: ../../

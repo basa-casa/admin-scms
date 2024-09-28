@@ -1,0 +1,40 @@
+name: Posts
+fields:
+  - field_type: string
+    name: title
+    label: Title
+    widget: string
+    required: true
+    default: ""
+    hint: Name this piece of content
+    comment: ""
+    pattern: ""
+  - field_type: import
+    import: field hugo-content-body
+    extend: null
+folder: content/post
+description: ""
+label: Test Post
+label_singular: ""
+collection_type: files
+filter: null
+identifier_field: ""
+path: ""
+slug: ""
+format: yaml-frontmatter
+extension: ""
+frontmatter_delimiter: ""
+create: true
+delete: false
+publish: false
+hide: false
+preview_path: ""
+preview_path_date_field: ""
+editor: null
+summary: ""
+sortable_fields: []
+view_filters: []
+view_groups: []
+media_folder: ""
+public_folder: ""
+nested: null
