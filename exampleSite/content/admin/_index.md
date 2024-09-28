@@ -8,7 +8,7 @@ menus:
   - adminHelp
 # CMS.md files beneath this one inherit these options
 cascade:
-  cms: https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js # The JS CMS that reads Netlify CMS-descendant config.yml files. Decap requires adding local backend configuration in config.backend below. https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js #
+  cms: https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js # The JS CMS that reads Netlify CMS-descendant config.yml files, currently best with Sveltia CMS. RIP StaticJSCMS and NetlifyCMS... Decap works but is behind Sveltia in UI, velocity, and ease-of use. Decap also requires adding local backend configuration in config.backend below, and running a proxy server from the git repo you want to edit. https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js #
   outputs:
     # The CMS page
     - HTML 
@@ -25,7 +25,7 @@ cascade:
     public_folder: img
     site_url: ../../
     display_url: /
-    logo_url: "/img/hugo-admin.png"
+    logo_url: "/img/admin.png"
 draft: false
 ---
 Welcome to `/admin/help`!
