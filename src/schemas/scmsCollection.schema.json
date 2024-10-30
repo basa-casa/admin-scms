@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Collections",
+  "type": "object",
+  "definitions": {
+    "name": {
+      "type": "string",
+      "description": "The name of the collection."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the collection."
+    },
+    "fields": {
+      "type": "array",
+      "items": { "$ref": "scmsField.schema.json" },
+      "description": "The fields to edit."
+    },
+    "label": {
+      "type": "string",
+      "description": "The label of the collection, displayed above the entry list."
+    },
+    "label_singular": {
+      "type": "string",
+      "description": "The singular label for the collection."
+    },
+    "file": {
+      "type": "object",
+      "description": "The file and fields in the collection.",
+      "properties": {
+        "name": { "$ref": "#/definitions/name" },
+        "label": { "$ref": "#/definitions/label" },
+        "file": {
+          "type": "string",
+          "description": "The file to edit, relative to the repo root."
+        },
+        "fields": { "$ref": "https://raw.githubusercontent.com/basa-casa/admin-scms/refs/heads/main/assets/schemas/scmsField.schema.json" }
+    }
+  }
+},
+  "oneOf": [
+    {
+        "properties": {
+          "name": { "$ref": "#/definitions/name" },
+          "label": { "$ref": "#/definitions/label" },
+          "label_singular": { "$ref": "#/definitions/label_singular" },
+          "description": { "$ref": "#/definitions/description" },
+          "folder": {
+            "type": "string",
+            "description": "The folder where the collection is stored."
+          },
+          "fields": { "$ref": "#/definitions/fields" },
+          "identifier_field": {
+            "type": "string",
+            "description": "The identifier field for the collection."
+          },
+          "filter": {
+            "type": "object",
+            "description": "Optional filter for folder collections."
+          },
+          "create": {
+            "type": "boolean",
+            "description": "Allows users to create new items in the collection."
+          },
+          "publish": {
+            "type": "boolean",
+            "description": "Hides UI publishing controls for a collection."
+          },
+          "hide": {
+            "type": "boolean",
+            "description": "Hides a collection in the CMS UI."
+          },
+          "delete": {
+            "type": "boolean",
+            "description": "Prevents users from deleting items in a collection."
+          },
+          "extension": {
+            "type": "string",
+            "description": "The file extension for the collection."
+          },
+          "format": {
+            "type": "string",
+            "description": "The format of the collection."
+          },
+          "frontmatter_delimiter": {
+            "type": "string",
+            "description": "The frontmatter delimiter for the collection."
+          },
+          "slug": {
+            "type": "string",
+            "description": "Filename template for folder collections with create: true."
+          },
+          "preview_path": {
+            "type": "string",
+            "description": "The preview path for the collection."
+          },
+          "preview_path_date_field": {
+            "type": "string",
+            "description": "The preview path date field for the collection."
+          },
+          "editor": {
+            "type": "object",
+            "description": "Editor configuration for the collection."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Display for entries on the entries list."
+          },
+          "sortable_fields": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The fields that can be used to sort the collection."
+          },
+          "view_filters": {
+            "type": "array",
+            "items": { "type": "object" },
+            "description": "View filters for the collection."
+          },
+          "view_groups": {
+            "type": "array",
+            "items": { "type": "object" },
+            "description": "View groups for the collection."
+          }
+        },
+        "required": ["name", "fields"]
+      },
+      {
+        "properties": { 
+          "name": { "$ref": "#/definitions/name" },
+          "label": { "$ref": "#/definitions/label" },
+          "description": { "$ref": "#/definitions/description" },
+          "files": {
+            "type": "array",
+            "items": [ 
+              {
+                "oneOf": [
+                {"import": {"type": "string", "description": "The file definition to import."}},
+                {"$ref": "#definitions/file" }
+              ]
+            }
+            ],
+            "description": "The files in the collection."
+          },
+          "required": ["files","name"]
+        }
+      }
+    ]
+  }

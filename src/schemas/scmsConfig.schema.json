@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config",
+  "type": "object",
+  "properties": {
+    "backend": {
+      "type": "string",
+      "enum": ["git-gateway", "github", "gitlab", "bitbucket"],
+      "description": "The backend service used for authentication and data storage.",
+      "default": "git-gateway",
+      "examples": ["git-gateway", "github"]
+    },
+    "media_folder": {
+      "type": "string",
+      "description": "The folder where media files are stored.",
+      "default": "static/media",
+      "examples": ["static/media", "assets/images"]
+    },
+    "public_folder": {
+      "type": "string",
+      "description": "The folder where public files are stored.",
+      "default": "/media",
+      "examples": ["/media", "/assets/images"]
+    },
+    "site_url": {
+      "type": "string",
+      "pattern": "^(https?|ftp)://[^s/$.?#].[^s]*$",
+      "description": "The URL of the site.",
+      "examples": ["https://example.com"]
+    },
+    "display_url": {
+      "type": "string",
+      "pattern": "^(https?|ftp)://[^s/$.?#].[^s]*$",
+      "description": "The display URL of the site.",
+      "examples": ["https://example.com"]
+    },
+    "logo_url": {
+      "type": "string",
+      "pattern": "^(https?|ftp)://[^s/$.?#].[^s]*$",
+      "description": "The URL of the site's logo.",
+      "examples": ["https://example.com/logo.png"]
+    },
+    "locale": {
+      "type": "string",
+      "description": "The locale of the site.",
+      "default": "en",
+      "examples": ["en", "fr", "es"]
+    },
+    "slug": {
+      "type": "object",
+      "description": "The slug configuration for the site.",
+      "properties": {
+        "encoding": {
+          "type": "string",
+          "enum": ["unicode", "ascii"],
+          "description": "The encoding used for the slug.",
+          "default": "unicode",
+          "examples": ["unicode", "ascii"]
+        },
+        "clean_accents": {
+          "type": "boolean",
+          "description": "Whether to clean accents from the slug.",
+          "default": false,
+          "examples": [true, false]
+        },
+        "sanitize_replacement": {
+          "type": "string",
+          "description": "The character used to replace sanitized characters in the slug.",
+          "default": "-",
+          "examples": ["-", "_"]
+        }
+      }
+    },
+    "publish_mode": {
+      "type": "string",
+      "enum": ["simple", "editorial_workflow"],
+      "description": "The publish mode for the site.",
+      "default": "simple",
+      "examples": ["simple", "editorial_workflow"]
+    },
+    "load_config_file": {
+      "type": "boolean",
+      "description": "Whether to load the configuration file.",
+      "default": true,
+      "examples": [true, false]
+    },
+    "local_backend": {
+      "type": "boolean",
+      "description": "Whether to use a local backend.",
+      "default": false,
+      "examples": [true, false]
+    },
+    "branch": {
+      "type": "string",
+      "description": "The branch used for the backend.",
+      "default": "main",
+      "examples": ["main", "master", "develop"]
+    },
+    "base_url": {
+      "type": "string",
+      "pattern": "^(https?|ftp)://[^s/$.?#].[^s]*$",
+      "description": "The base URL for the backend.",
+      "examples": ["https://api.example.com"]
+    },
+    "auth_endpoint": {
+      "type": "string",
+      "pattern": "^(https?|ftp)://[^s/$.?#].[^s]*$",
+      "description": "The authentication endpoint for the backend.",
+      "examples": ["https://auth.example.com"]
+    },
+    "cms_label_prefix": {
+      "type": "string",
+      "description": "The prefix for CMS labels.",
+      "default": "CMS",
+      "examples": ["CMS", "Admin"]
+    },
+    "collections": {
+      "type": "array",
+      "items": { "$ref": "scmsCollection.schema.json" },
+      "description": "The collections configuration."
+    },
+    "media_library": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "config": { "type": "object" }
+      },
+      "description": "The media library configuration."
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "index": { "type": "string" },
+        "config": { "type": "object" }
+      },
+      "description": "The search configuration."
+    },
+    "editor": {
+      "type": "object",
+      "properties": {
+        "preview": { "type": "boolean" },
+        "editor_options": { "type": "object" }
+      },
+      "description": "The editor configuration."
+    }
+  },
+  "required": ["backend", "media_folder", "public_folder", "collections"]
+}

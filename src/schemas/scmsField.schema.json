@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fields",
+  "type": "object",
+  "properties": {
+    "comment": {
+      "type": "string",
+      "description": "A comment about the field."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the field."
+    },
+    "label": {
+      "type": "string",
+      "description": "The label of the field."
+    },
+    "widget": {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "boolean",
+        "text",
+        "select",
+        "relation",
+        "object",
+        "list",
+        "markdown",
+        "datetime",
+        "compute",
+        "uuid"
+      ],
+      "description": "The widget type of the field."
+    },
+    "hint": {
+      "type": "string",
+      "description": "A hint for the field."
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Whether the field is required."
+    },
+    "defaultValue": {
+      "type": "any",
+      "description": "The default value of the field."
+    },
+    "pattern": {
+      "type": "string",
+      "description": "A pattern that the field value must match."
+    },
+    "min": {
+      "type": "number",
+      "description": "The minimum value for the field."
+    },
+    "max": {
+      "type": "number",
+      "description": "The maximum value for the field."
+    },
+    "options": {
+      "type": "array",
+      "description": "The options for the field."
+    },
+    "fields": {
+      "type": "array",
+      "items": { "$ref": "#" },
+      "description": "The sub-fields for the field."
+    },
+    "types": {
+      "type": "array",
+      "description": "The types for the field."
+    },
+    "valueField": {
+      "type": "string",
+      "description": "The value field for the relation widget."
+    },
+    "displayFields": {
+      "type": "array",
+      "description": "The display fields for the relation widget."
+    },
+    "importField": {
+      "type": "string",
+      "description": "The import field for the field."
+    },
+    "fieldType": {
+      "type": "string",
+      "description": "The field type."
+    },
+    "modes": {
+      "type": "array",
+      "description": "The modes for the field."
+    },
+    "collection": {
+      "type": "string",
+      "description": "The collection for the relation widget."
+    },
+    "multiple": {
+      "type": "boolean",
+      "description": "Whether the relation widget allows multiple selections."
+    },
+    "date_format": {
+      "type": "string",
+      "description": "The date format for the datetime widget."
+    },
+    "time_format": {
+      "type": "string",
+      "description": "The time format for the datetime widget."
+    },
+    "format": {
+      "type": "string",
+      "description": "The format for the datetime widget."
+    },
+    "function": {
+      "type": "string",
+      "description": "The function for the compute widget."
+    },
+    "uuid_version": {
+      "type": "string",
+      "enum": ["v1", "v4"],
+      "description": "The version of UUID to generate.",
+      "default": "v4",
+      "examples": ["v1", "v4"]
+    }
+  },
+  "required": ["name", "label", "widget"]
+}

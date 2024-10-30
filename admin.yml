@@ -1,0 +1,3 @@
+title: Admin static CMS
+schemas:
+  - src/schemas/*.json
