@@ -15,7 +15,7 @@ collections:
       field_type: string
       hint: URL of javascript CMS imported to <script src="{{ .Params.CMS }}"></script>
       label: CMS
-      name: CMS
+      name: cms
       widget: string
     - field_type: list
       fields:

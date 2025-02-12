@@ -82,7 +82,7 @@
       "type": "string",
       "description": "The import field for the field."
     },
-    "fieldType": {
+    "field_type": {
       "type": "string",
       "description": "The field type."
     },

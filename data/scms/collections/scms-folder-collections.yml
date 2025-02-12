@@ -78,7 +78,7 @@ fields:
     field_type: import
     extend:
       hint: This setting allows the customization of the collection list view in the
-        CMS UI. Enter a string with templates can be used to include values of
+        CMS UI. Entering a string with templates can be used to include values of
         different fields, e.g. {{title}}. This option over-rides the default of
         title field and identifier_field
   - import: field scms-collection-sortable_fields
